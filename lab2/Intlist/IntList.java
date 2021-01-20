@@ -1,4 +1,5 @@
 import java.util.Formatter;
+import java.util.List;
 
 /**
  * A naked recursive list of integers, similar to what we saw in lecture 3, but
@@ -35,6 +36,7 @@ public class IntList {
 
     /**
      * Returns a list equal to L with all elements squared. Destructive.
+     * 所有元素都被平方一下
      */
     public static void dSquareList(IntList L) {
 
@@ -82,7 +84,42 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A == null && B == null) {
+            return null;
+        }
+
+        if(A == null) {
+            return B;
+        }
+
+        if(B == null) {
+            return A;
+        }
+
+        IntList Arest = A.rest;
+        while(Arest.rest != null) {
+            Arest = Arest.rest;
+        }
+
+        Arest.rest = B;
+        return A;
+    }
+
+
+    private static void copyIntList(IntList list, IntList A) {
+        copy(list, A);
+    }
+
+    public static void copy(IntList list, IntList A) {
+
+        if(A != null) {
+            list.first = A.first;
+
+            if(A.rest != null) {
+                list.rest = new IntList();
+                copy(list.rest, A.rest);
+            }
+        }
     }
 
     /**
@@ -91,7 +128,28 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A == null && B == null) {
+            return null;
+        }
+
+        IntList list = new IntList();
+
+        if(A == null) {
+             copyIntList(list, B);
+             return list;
+        }
+
+        if(B == null) {
+            copyIntList(list, A);
+            return list;
+        }
+
+        IntList tempA = new IntList();
+        copyIntList(tempA, A);
+        IntList C = dcatenate(tempA, B);
+        copyIntList(list, C);
+
+        return list;
     }
 
 
@@ -233,10 +291,10 @@ public class IntList {
 
     public static void main(String[] args) {
 
-        IntList myList = new IntList(0, null);
-        myList.tail = new IntList(1, null);
-        myList.tail.tail = new IntList(2, null);
-        myList.tail.tail.tail = new IntList(3, null);
+//        IntList myList = new IntList(0, null);
+//        myList.tail = new IntList(1, null);
+//        myList.tail.tail = new IntList(2, null);
+//        myList.tail.tail.tail = new IntList(3, null);
     }
 }
 
