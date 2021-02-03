@@ -113,7 +113,7 @@ public class Planet {
 
         double F = calcForceExertedBy(p);
         double r = calcDistance(p);
-        double dy = Math.abs(this.yyPos - p.yyPos);
+        double dy = this.yyPos - p.yyPos;
 
         return (F * dy) / r;
     }
@@ -128,7 +128,7 @@ public class Planet {
 
         double F = calcForceExertedBy(p);
         double r = calcDistance(p);
-        double dx = Math.abs(this.xxPos - p.xxPos);
+        double dx = this.xxPos - p.xxPos;
 
         return (F * dx) / r;
     }
@@ -158,10 +158,6 @@ public class Planet {
         double distance = (this.xxPos - p.xxPos) * (this.xxPos - p.xxPos)
                 + (this.yyPos - p.yyPos) * (this.yyPos - p.yyPos);
         return Math.sqrt(distance);
-    }
-
-    public Planet() {
-
     }
 
     public Planet(Planet p) {
