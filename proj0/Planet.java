@@ -113,7 +113,7 @@ public class Planet {
 
         double F = calcForceExertedBy(p);
         double r = calcDistance(p);
-        double dy = this.yyPos - p.yyPos;
+        double dy = p.yyPos - this.yyPos;
 
         return (F * dy) / r;
     }
@@ -128,7 +128,7 @@ public class Planet {
 
         double F = calcForceExertedBy(p);
         double r = calcDistance(p);
-        double dx = this.xxPos - p.xxPos;
+        double dx = p.xxPos - this.xxPos;
 
         return (F * dx) / r;
     }
