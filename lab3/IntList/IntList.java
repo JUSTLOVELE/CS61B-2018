@@ -42,24 +42,32 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-
-        if(A == null) {
-            return null;
+        IntList temp1=null;
+        IntList x=A;
+        while (x!=null){
+            IntList temp2=x.rest;
+            x.rest=temp1;
+            temp1=x;
+            x=temp2;
         }
-
-        List<Integer> lists = new ArrayList<Integer>();
-
-        while (A != null) {
-
-            lists.add(A.first);
-            A = A.rest;
-        }
-
-        Integer[] arr = new Integer[lists.size()];
-
-        for(int i=0; i<lists.size(); i++) {
-            arr[i] = lists.get(i);
-        }
+        return temp1;
+//        if(A == null) {
+//            return null;
+//        }
+//
+//        List<Integer> lists = new ArrayList<Integer>();
+//
+//        while (A != null) {
+//
+//            lists.add(A.first);
+//            A = A.rest;
+//        }
+//
+//        Integer[] arr = new Integer[lists.size()];
+//
+//        for(int i=0; i<lists.size(); i++) {
+//            arr[i] = lists.get(i);
+//        }
 
 //        for (int i = 0; i < arr.length / 2; i++) {
 //            int j = arr.length - i - 1;
@@ -68,16 +76,16 @@ public class IntList {
 //            arr[j] = temp;
 //        }
 
-         Integer[] r = new Integer[arr.length];
-         int index = arr.length - 1;
-
-         for (int a : arr) {
-
-             r[index] = a;
-             index--;
-         }
-
-        return IntList.of(r);
+//         Integer[] r = new Integer[arr.length];
+//         int index = arr.length - 1;
+//
+//         for (int a : arr) {
+//
+//             r[index] = a;
+//             index--;
+//         }
+//
+//        return IntList.of(r);
     }
 
     /**
