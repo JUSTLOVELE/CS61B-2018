@@ -6,8 +6,8 @@ public class IntListTest {
 
     @Test
     public void testReverse() {
-        IntList myList = IntList.of(0, 1, 2, 3);
-        IntList x = IntList.of(3, 2, 1, 0);
+        IntList myList = IntList.of(1, 2, 3, 4);
+        IntList x = IntList.of(4, 3, 2, 1);
         assertEquals(IntList.reverse(myList), x);
     }
 

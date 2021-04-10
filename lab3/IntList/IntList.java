@@ -61,14 +61,23 @@ public class IntList {
             arr[i] = lists.get(i);
         }
 
-        for (int i = 0; i < arr.length / 2; i++) {
-            int j = arr.length - i - 1;
-            Integer temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
+//        for (int i = 0; i < arr.length / 2; i++) {
+//            int j = arr.length - i - 1;
+//            Integer temp = arr[i];
+//            arr[i] = arr[j];
+//            arr[j] = temp;
+//        }
 
-        return IntList.of(arr);
+         Integer[] r = new Integer[arr.length];
+         int index = arr.length - 1;
+
+         for (int a : arr) {
+
+             r[index] = a;
+             index--;
+         }
+
+        return IntList.of(r);
     }
 
     /**
