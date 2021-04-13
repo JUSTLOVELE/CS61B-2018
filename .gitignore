@@ -26,4 +26,5 @@ hs_err_pid*
 *.iml
 /lab2setup/out
 /lab2/out
+/proj1a/out
 
