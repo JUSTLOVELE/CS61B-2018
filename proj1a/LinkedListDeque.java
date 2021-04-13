@@ -2,18 +2,18 @@ public class LinkedListDeque<T> {
 
     class Node {
 
-        public Node() {
+        private Node() {
 
         }
 
-        public Node (T value ) {
+        private Node(T value) {
             this.value = value;
         }
 
-        public Node prev;
-        public Node next;
-        public T value;
-        public String v;
+        private Node prev;
+        private Node next;
+        private T value;
+        private String v;
     }
 
     private int size = 0;
