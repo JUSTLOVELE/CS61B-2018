@@ -215,16 +215,15 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        T t = this.arrays[this.nextFirst + 1];
-        this.arrays[this.nextFirst + 1] = null;
-        size--;
-
         if (this.nextFirst == this.arrays.length - 1) {
             this.nextFirst = 0;
         } else {
             this.nextFirst++;
         }
 
+        T t = this.arrays[this.nextFirst];
+        this.arrays[this.nextFirst] = null;
+        size--;
         resizeIDecrease();
 
         return t;
@@ -248,7 +247,6 @@ public class ArrayDeque<T> {
 
         T t = this.arrays[this.nextLast];
         this.arrays[this.nextLast] = null;
-
         size--;
         resizeIDecrease();
 
@@ -281,8 +279,34 @@ public class ArrayDeque<T> {
 //        Integer a = null;
 //
 //        q.addFirst(0);
-//        a = q.get(0);
+//        q.addFirst(1);
+//        a = q.removeFirst();
 //        System.out.println(a);
+//
+//
+//
+//
+////        q.addFirst(0);
+////        q.addLast(1);
+////        a = q.get(1);
+////        System.out.println(a);
+////        q.addFirst(3);
+////        a = q.removeLast();
+////        System.out.println(a);
+////        q.addLast(5);
+////        q.addFirst(6);
+////        a = q.removeFirst();
+////        System.out.println(a);
+////        a = q.removeLast();
+////        System.out.println(a);
+////        a = q.removeLast();
+////        System.out.println(a);
+////        a = q.removeFirst();
+////        System.out.println(a);
+//
+////        q.addFirst(0);
+////        a = q.get(0);
+////        System.out.println(a);
 //
 //
 ////        q.addFirst(0);
