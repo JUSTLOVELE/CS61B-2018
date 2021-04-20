@@ -149,8 +149,8 @@ public class ArrayDeque<T> {
                     this.nextFirst++;
                 }
                 //先+1是因为0位留给nextFirst,因为nextFirst要是空位
-                if(this.arrays[this.nextFirst] != null) {
-                    index++;//从1开始把0留给nextFirst
+                if (this.arrays[this.nextFirst] != null) {
+                    index++; //从1开始把0留给nextFirst
                     newArray[index] = this.arrays[this.nextFirst];
                 }
             } else {
@@ -190,7 +190,7 @@ public class ArrayDeque<T> {
                     this.nextFirst++;
                 }
                 //先+1是因为0位留给nextFirst,因为nextFirst要是空位
-                if(this.arrays[this.nextFirst] != null) {
+                if (this.arrays[this.nextFirst] != null) {
                     index++;
                     newArray[index] = this.arrays[this.nextFirst];
                 }
@@ -267,10 +267,10 @@ public class ArrayDeque<T> {
 
         int n = this.nextFirst + 1 + index; //加1是因为nextFirst是为空,所以正式取值要+1
 
-        if(n < this.arrays.length) {
+        if (n < this.arrays.length) {
             return this.arrays[n];
-        }else{
-            return this.arrays[n-this.arrays.length];
+        } else {
+            return this.arrays[n - this.arrays.length];
         }
     }
 //
