@@ -267,20 +267,32 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        return this.arrays[index];
+        int n = this.nextFirst + 1 + index; //加1是因为nextFirst是为空,所以正式取值要+1
+
+        if(n < this.arrays.length) {
+            return this.arrays[n];
+        }else{
+            return this.arrays[n-this.arrays.length];
+        }
     }
 //
-    public static void main(String[] args) {
-        ArrayDeque<Integer> q = new ArrayDeque<>();
-        Integer a = null;
-        q.addFirst(0);
-        a = q.removeLast();
-        System.out.println(a);
-        q.addFirst(2);
-        a = q.removeLast();
-        System.out.println(a);
-        q.addFirst(4);
-        a = q.removeLast();
-        System.out.println(a);
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> q = new ArrayDeque<>();
+//        Integer a = null;
+//
+//        q.addFirst(0);
+//        a = q.get(0);
+//        System.out.println(a);
+//
+//
+////        q.addFirst(0);
+////        a = q.removeLast();
+////        System.out.println(a);
+////        q.addFirst(2);
+////        a = q.removeLast();
+////        System.out.println(a);
+////        q.addFirst(4);
+////        a = q.removeLast();
+////        System.out.println(a);
+//    }
 }
