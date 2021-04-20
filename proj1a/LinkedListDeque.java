@@ -20,9 +20,9 @@ public class LinkedListDeque<T> {
 
     private Node sentinel;
     //用first、last就是表示用2个哨兵，课件推荐使用1个的形式
-    private Node first;
-
-    private Node last;
+//    private Node first;
+//
+//    private Node last;
 
     /**
      * Creates an empty linked list deque.
@@ -149,7 +149,7 @@ public class LinkedListDeque<T> {
 
         if (firstNode.next != null) {
 
-            Node secondNode = first.next;
+            Node secondNode = firstNode.next;
             sentinel.next = secondNode;
             secondNode.prev = sentinel;
 
@@ -208,5 +208,20 @@ public class LinkedListDeque<T> {
 
 
         return lastNode.value;
+    }
+
+    public static void main(String[] args) {
+
+        LinkedListDeque<Integer> q = new LinkedListDeque<>();
+        q.addFirst(0);
+        q.addFirst(1);
+        q.addFirst(2);
+        q.addFirst(3);
+        q.addFirst(4);
+        q.addFirst(5);
+        q.addFirst(6);
+        q.addFirst(7);
+        Integer first = q.removeFirst();
+        System.out.println(first);
     }
 }
