@@ -24,45 +24,6 @@ public class ArrayDeque<T> {
     private int item = 0;
 
     private T[] arrays;
-//
-//    public static void main(String[] args) {
-//
-//        ArrayDeque<String> arrayDeque = new ArrayDeque<>();
-//        arrayDeque.addFirst("a");
-//        arrayDeque.addFirst("b");
-//        arrayDeque.addFirst("c");
-//        arrayDeque.addFirst("d");
-//        arrayDeque.addLast("e");
-//        arrayDeque.addLast("f");
-//        arrayDeque.addLast("g");
-//        arrayDeque.addLast("h");
-//        arrayDeque.addLast("k");
-//        arrayDeque.addLast("e");
-//        arrayDeque.addLast("f");
-//        arrayDeque.addLast("g");
-//        arrayDeque.addLast("h");
-//        arrayDeque.addLast("k");
-//        arrayDeque.addLast("e");
-//        arrayDeque.addLast("f");
-//        arrayDeque.addLast("g");
-//        arrayDeque.addLast("h");
-//        arrayDeque.addLast("k");
-//
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeLast();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeLast();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeLast();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeFirst();
-//        arrayDeque.removeLast();
-//
-//        arrayDeque.printDeque();
-//    }
 
     /**
      * Creates an empty linked list deque.
@@ -188,15 +149,17 @@ public class ArrayDeque<T> {
                     this.nextFirst++;
                 }
                 //先+1是因为0位留给nextFirst,因为nextFirst要是空位
-                index++;
-                newArray[index] = this.arrays[this.nextFirst];
+                if(this.arrays[this.nextFirst] != null) {
+                    index++;//从1开始把0留给nextFirst
+                    newArray[index] = this.arrays[this.nextFirst];
+                }
             } else {
                 flag = false;
             }
         }
 
         this.nextFirst = 0;
-        this.nextLast = index++; //最后再加一是因为nextLast要是空的
+        this.nextLast = index + 1; //最后再加一是因为nextLast要是空的
         this.arrays = newArray;
     }
 
@@ -220,16 +183,17 @@ public class ArrayDeque<T> {
             //为什么加一呢?因为nextFirst和nextLast是空的,加一如果相等意味着不能再往前了
             if (this.nextFirst != this.nextLast) {
 
-                if (this.nextFirst >= this.arrays.length) {
+                if (this.nextFirst >= this.arrays.length - 1) {
                     //如果nextFirst走到了数组右边的边界,就置于0
                     this.nextFirst = 0;
                 } else {
                     this.nextFirst++;
                 }
                 //先+1是因为0位留给nextFirst,因为nextFirst要是空位
-                index++;
-                newArray[index] = this.arrays[this.nextFirst];
-
+                if(this.arrays[this.nextFirst] != null) {
+                    index++;
+                    newArray[index] = this.arrays[this.nextFirst];
+                }
             } else {
                 flag = false;
             }
@@ -305,4 +269,19 @@ public class ArrayDeque<T> {
 
         return this.arrays[index];
     }
+//
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> q = new ArrayDeque<>();
+//        q.addFirst(0);
+//        q.addFirst(1);
+//        q.addFirst(2);
+//        q.addFirst(3);
+//        q.addFirst(4);
+//        q.addFirst(5);
+//        q.addFirst(6);
+//        q.addFirst(7);
+//        q.addFirst(8);
+//        Integer first = q.removeLast();
+//        System.out.println(first);
+//    }
 }
