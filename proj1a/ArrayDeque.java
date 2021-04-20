@@ -240,16 +240,16 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        T t = this.arrays[this.nextLast - 1];
-        this.arrays[this.nextLast - 1] = null;
-        size--;
-
         if (this.nextLast == 0) {
             this.nextLast = this.arrays.length - 1;
         } else {
             this.nextLast--;
         }
 
+        T t = this.arrays[this.nextLast];
+        this.arrays[this.nextLast] = null;
+
+        size--;
         resizeIDecrease();
 
         return t;
@@ -270,18 +270,17 @@ public class ArrayDeque<T> {
         return this.arrays[index];
     }
 //
-//    public static void main(String[] args) {
-//        ArrayDeque<Integer> q = new ArrayDeque<>();
-//        q.addFirst(0);
-//        q.addFirst(1);
-//        q.addFirst(2);
-//        q.addFirst(3);
-//        q.addFirst(4);
-//        q.addFirst(5);
-//        q.addFirst(6);
-//        q.addFirst(7);
-//        q.addFirst(8);
-//        Integer first = q.removeLast();
-//        System.out.println(first);
-//    }
+    public static void main(String[] args) {
+        ArrayDeque<Integer> q = new ArrayDeque<>();
+        Integer a = null;
+        q.addFirst(0);
+        a = q.removeLast();
+        System.out.println(a);
+        q.addFirst(2);
+        a = q.removeLast();
+        System.out.println(a);
+        q.addFirst(4);
+        a = q.removeLast();
+        System.out.println(a);
+    }
 }

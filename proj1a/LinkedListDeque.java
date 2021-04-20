@@ -199,11 +199,7 @@ public class LinkedListDeque<T> {
             return null;
         }
 
-        Node lastNode = sentinel;
-
-        if(index == 0) {
-            return lastNode.next.value;
-        }
+        Node lastNode = sentinel.next;
 
         while (index > 0) {
             lastNode = lastNode.next;
@@ -212,26 +208,28 @@ public class LinkedListDeque<T> {
 
         return lastNode.value;
     }
-
+//
 //    public static void main(String[] args) {
 //
 //        LinkedListDeque<Integer> q = new LinkedListDeque<>();
 //
-////        q.addFirst(0);
-////        Integer f = q.get(0);
-////        System.out.println(f);
-//
-//
-//        q.addFirst(0);
 //        q.addFirst(1);
-//        q.addFirst(2);
+//        Integer a = q.get(0);
+//        System.out.println(a);
 //        q.addFirst(3);
-//        q.addFirst(4);
-//        q.addFirst(5);
-//        q.addFirst(6);
-//        q.addFirst(7);
-//        q.addFirst(8);
-//        Integer first = q.removeLast();
-//        System.out.println(first);
+//        a = q.get(1);
+//        System.out.println(a);
+//
+////        q.addFirst(0);
+////        q.addFirst(1);
+////        q.addFirst(2);
+////        q.addFirst(3);
+////        q.addFirst(4);
+////        q.addFirst(5);
+////        q.addFirst(6);
+////        q.addFirst(7);
+////        q.addFirst(8);
+////        Integer first = q.removeLast();
+////        System.out.println(first);
 //    }
 }
