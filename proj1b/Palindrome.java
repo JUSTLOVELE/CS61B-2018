@@ -14,10 +14,20 @@ public class Palindrome {
 
         Deque<Character> deque = wordToDeque(word);
         char[] chars = word.toCharArray();
+        //不检查中间字符串的相等性
+        boolean odd = (word.length() % 2 != 0) ? true : false;
+        Integer noCheckIndex = (word.length() - 1) / 2;
 
         for (int i = 0; i < word.length(); i++) {
 
-            boolean b = cc.equalChars(deque.removeLast(), chars[i]);
+            char x = deque.removeLast();
+            char y = chars[i];
+
+            if (odd && i == noCheckIndex) {
+                continue;
+            }
+
+            boolean b = cc.equalChars(x, y);
 
             if (!b) {
                 return false;

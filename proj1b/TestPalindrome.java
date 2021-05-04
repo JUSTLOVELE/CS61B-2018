@@ -13,6 +13,10 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("abc"));
         assertFalse(palindrome.isPalindrome("abcdefg"));
         assertTrue(palindrome.isPalindrome("abcba"));
+        CharacterComparator offByOne = new OffByOne();
+        assertTrue(palindrome.isPalindrome("detrude", offByOne));
+        CharacterComparator offBy5 = new OffByN(5);
+        assertTrue(palindrome.isPalindrome("binding", offBy5));
     }
 
     @Test
