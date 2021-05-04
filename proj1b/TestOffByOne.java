@@ -7,15 +7,15 @@ public class TestOffByOne {
     // new ones, or the autograder might be upset.
     static CharacterComparator offByOne = new OffByOne();
 
-    @Test
-    public void testEqualCharsWithN() {
-
-        OffByN offBy5 = new OffByN(5);
-        assertTrue(offBy5.equalChars('a', 'f')); // true
-        assertFalse(offBy5.equalChars('f', 'h'));
-        assertTrue(offBy5.equalChars('f', 'a'));
-
-    }
+//    @Test
+//    public void testEqualCharsWithN() {
+//
+//        OffByN offBy5 = new OffByN(5);
+//        assertTrue(offBy5.equalChars('a', 'f')); // true
+//        assertFalse(offBy5.equalChars('f', 'h'));
+//        assertTrue(offBy5.equalChars('f', 'a'));
+//
+//    }
 
     @Test
     public void testEqualChars() {
