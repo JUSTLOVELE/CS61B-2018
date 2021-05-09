@@ -3,67 +3,56 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestArrayDequeGold {
-
     @Test
-    public void test01() {
+    public void test() {
+        StudentArrayDeque<Integer> sad = new StudentArrayDeque<>();
+        ArrayDequeSolution<Integer> ads = new ArrayDequeSolution<>();
 
-        StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
-        ArrayDequeSolution<Integer> sol1 = new ArrayDequeSolution<>();
+        StringBuilder msg = new StringBuilder();
 
-        for (int i = 0; i < 10; i += 1) {
-            double numberBetweenZeroAndOne = StdRandom.uniform();
-
-            if (numberBetweenZeroAndOne < 0.5) {
-                sad1.addLast(i);
-                sol1.addLast(i);
-            } else {
-                sad1.addFirst(i);
-                sol1.addFirst(i);
-            }
-        }
-
-        for (int i = 0; i < 10; i += 1) {
-
-            System.out.println(i);
-            double numberBetweenZeroAndOne = StdRandom.uniform();
-            Integer actual = null;
-            Integer expected = null;
-
-            if (numberBetweenZeroAndOne < 0.5) {
-                actual = sad1.removeLast();
-                expected = sol1.removeLast();
-            } else {
-                actual = sad1.removeFirst();
-                expected = sol1.removeFirst();
+        int s = 0;
+        for (int i = 0; i < 500; i++) {
+            if (i % 5 == 0) {
+                msg.append("size()\n");
+                assertEquals(msg.toString(), ads.size(), sad.size());
             }
 
-            assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-                            + " not equal to " + expected + "!",
-                    expected, actual);
+            double selector = StdRandom.uniform();
+            if (selector < 0.25) {
+                sad.addFirst(i);
+                ads.addFirst(i);
+                s++;
+                msg.append("addFirst(" + i + ")\n");
+                assertEquals(msg.toString(), ads.get(0), sad.get(0));
+            } else if (selector < 0.5) {
+                sad.addLast(i);
+                ads.addLast(i);
+                s++;
+                msg.append("addLast(" + i + ")\n");
+                assertEquals(msg.toString(), ads.get(s - 1), sad.get(s - 1));
+            } else if (selector < 0.75) {
+                if (ads.isEmpty()) {
+                    msg.append("isEmpty()\n");
+                    assertTrue(msg.toString(), sad.isEmpty());
+                    continue;
+                }
+                Integer x = ads.removeFirst();
+                Integer y = sad.removeFirst();
+                s--;
+                msg.append("removeFirst()\n");
+                assertEquals(msg.toString(), x, y);
+            } else {
+                if (ads.isEmpty()) {
+                    msg.append("isEmpty()\n");
+                    assertTrue(msg.toString(), sad.isEmpty());
+                    continue;
+                }
+                Integer x = ads.removeLast();
+                Integer y = sad.removeLast();
+                s--;
+                msg.append("removeLast()\n");
+                assertEquals(msg.toString(), x, y);
+            }
         }
-
-
-
-//        sad1.printDeque();
-//        System.out.println("*************");
-//        System.out.println(sad1.removeFirst());
-//        System.out.println(sad1.removeFirst());
-//        System.out.println(sad1.removeFirst());
-//        sol1.removeFirst();
-//        sol1.removeFirst();
-//        sol1.removeFirst();
-//
-//        Integer actual = sad1.removeLast();
-//        Integer expected = sol1.removeLast();
-//        assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual
-//                        + " not equal to " + expected + "!",
-//                expected, actual);
-//        System.out.println("*************");
-//        sad1.printDeque();
-        //--------
-
-
-
-
     }
 }
