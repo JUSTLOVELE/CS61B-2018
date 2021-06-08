@@ -11,6 +11,7 @@ public class Game {
 
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
+     * 此方法从键盘获取输入，并将每次按键的结果绘制到屏幕上
      */
     public void playWithKeyboard() {
     }
@@ -26,6 +27,8 @@ public class Game {
      * to get the exact same world back again, since this corresponds to loading the saved game.
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
+     *
+     * 此方法将一系列键盘输入作为输入，并在处理输入中提供的所有按键（如下所述）后返回表示宇宙状态的 2D TETile 数组
      */
     public TETile[][] playWithInputString(String input) {
         // TODO: Fill out this method to run the game using the input passed in,

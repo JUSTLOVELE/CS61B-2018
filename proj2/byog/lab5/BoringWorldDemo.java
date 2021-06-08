@@ -14,8 +14,8 @@ public class BoringWorldDemo {
     public static void main(String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
+        //初始化宽度和高度,宽度和高度要根据块数量给出
         ter.initialize(WIDTH, HEIGHT);
-
         // initialize tiles
         TETile[][] world = new TETile[WIDTH][HEIGHT];
         for (int x = 0; x < WIDTH; x += 1) {
@@ -23,8 +23,8 @@ public class BoringWorldDemo {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-
         // fills in a block 14 tiles wide by 4 tiles tall
+        //覆盖上面的块
         for (int x = 20; x < 35; x += 1) {
             for (int y = 5; y < 10; y += 1) {
                 world[x][y] = Tileset.WALL;
