@@ -7,6 +7,33 @@ import static org.junit.Assert.*;
  */
 
 public class TestArrayRingBuffer {
+
+    @Test
+    public void myTest() {
+
+        ArrayRingBuffer<Double> buffer = new ArrayRingBuffer<Double>(50);
+        int index = buffer.capacity();
+
+        while (index > 0) {
+
+            double r = Math.random() - 0.5;
+            buffer.enqueue(r);
+            index--;
+        }
+
+        index = buffer.capacity();
+
+        while (index > 0) {
+
+            System.out.println(index);
+            Double a = buffer.dequeue();
+            Double b = buffer.peek();
+            Double c = (a + b) / 2;
+            buffer.enqueue(c);
+            index--;
+        }
+    }
+
     @Test
     public void someTest() {
         ArrayRingBuffer<Double> x = new ArrayRingBuffer<Double>(4);
