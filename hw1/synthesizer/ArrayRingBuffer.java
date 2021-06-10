@@ -34,7 +34,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     public void enqueue(T x) {
 
         if (fillCount() == capacity()) {
-            throw new RuntimeException("Ring buffer overflow");
+            throw new RuntimeException("Ring Buffer Overflow");
         }
 
         this.rb[last] = x;
@@ -56,7 +56,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     public T dequeue() {
 
         if (isEmpty()) {
-            throw new RuntimeException("Ring buffer underflow");
+            throw new RuntimeException("Ring Buffer Underflow");
         }
 
         T t = this.rb[first];
@@ -78,15 +78,10 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     public T peek() {
 
         if (isEmpty()) {
-            return null;
+            throw new RuntimeException("Ring Buffer Underflow");
         }
 
         return this.rb[first];
-    }
-
-    @Override
-    void moveTo(double deltaX, double deltaY) {
-
     }
 
     @Override
@@ -98,7 +93,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
         @Override
         public boolean hasNext() {
-            return isEmpty() ? false : true;
+            return !isEmpty();
         }
 
         @Override
