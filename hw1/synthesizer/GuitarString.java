@@ -1,4 +1,5 @@
-package synthesizer;// TODO: Make sure to make this class a part of the synthesizer package
+package synthesizer;
+// TODO: Make sure to make this class a part of the synthesizer package
 //package <package name>;
 
 //Make sure this class is public
@@ -21,20 +22,28 @@ public class GuitarString {
 
         int c = Double.valueOf(SR/frequency).intValue();
         buffer = new ArrayRingBuffer<Double>(c);
+        int index = buffer.capacity();
+
+        while (index > 0) {
+
+            buffer.enqueue(0.0);
+            index--;
+        }
     }
 
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
-        // TODO: Dequeue everything in the buffer, and replace it with random numbers
-        //       between -0.5 and 0.5. You can get such a number by using:
-        //       double r = Math.random() - 0.5;
+//         TODO: Dequeue everything in the buffer, and replace it with random numbers
+//               between -0.5 and 0.5. You can get such a number by using:
+//               double r = Math.random() - 0.5;
         //
         //       Make sure that your random numbers are different from each other.
         int index = buffer.capacity();
 
         while (index > 0) {
 
+            buffer.dequeue();
             double r = Math.random() - 0.5;
             buffer.enqueue(r);
             index--;
@@ -48,26 +57,10 @@ public class GuitarString {
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
-        int index = buffer.fillCount();
-
-        while (index > 0) {
-
-            Double a = buffer.dequeue();
-            Double b = buffer.peek();
-
-            if (b != null && a != null) {
-                Double c = this.DECAY * (a + b) / 2;
-                buffer.enqueue(c);
-            }else{
-                buffer.enqueue(a / 2);
-            }
-
-            index--;
-//            else {
-//                buffer.enqueue(a / 2);
-//                break;
-//            }
-        }
+        Double a = buffer.dequeue();
+        Double b = buffer.peek();
+        Double c = this.DECAY * 0.5 * (a + b);
+        buffer.enqueue(c);
     }
 
     /* Return the double at the front of the buffer. */

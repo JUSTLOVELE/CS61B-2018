@@ -1,6 +1,8 @@
 package synthesizer;
 // package <package name>;
 
+import java.util.Iterator;
+
 public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
     private int first;            // index for the next dequeue or peek
@@ -85,5 +87,23 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     void moveTo(double deltaX, double deltaY) {
 
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new KeyIterator();
+    }
+
+    public class KeyIterator implements Iterator<T> {
+
+        @Override
+        public boolean hasNext() {
+            return isEmpty() ? false : true;
+        }
+
+        @Override
+        public T next() {
+            return dequeue();
+        }
     }
 }
