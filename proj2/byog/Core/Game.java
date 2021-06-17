@@ -29,12 +29,17 @@ public class Game {
      * @return the 2D TETile[][] representing the state of the world
      *
      * 此方法将一系列键盘输入作为输入，并在处理输入中提供的所有按键（如下所述）后返回表示宇宙状态的 2D TETile 数组
+     * https://github.com/stg1205/CS61B/blob/master/proj2/byog/Core/Game.java
      */
     public TETile[][] playWithInputString(String input) {
         // TODO: Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
-
+        //第一个数字是N(NEW GAME)、l(LOAD GAME)、q(QUIT GAME)
+        //数字之后的都是表示方向：w、a、s、d,如果是以:q结尾表示结束
+        long seed = Long.parseLong(input.replaceAll("[^0-9]", ""));
+        //用种子去生成迷宫世界
+        
         TETile[][] finalWorldFrame = null;
         return finalWorldFrame;
     }
